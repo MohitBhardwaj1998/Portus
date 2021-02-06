@@ -1,3 +1,7 @@
+# This file has error while installing ruby. say's
+# Repository 'ruby' is invalid.
+# [ruby|https://download.opensuse.org/repositories/devel:/languages:/ruby/openSUSE_Leap_15.0] Valid metadata not found at specified URL
+# since v:openSUSE_Leap_15.0 has been removed from /languages:/ruby
 FROM opensuse/ruby:2.6
 MAINTAINER SUSE Containers Team <containers@suse.com>
 
@@ -15,7 +19,7 @@ COPY Gemfile* ./
 #   4. We then proceed to remove unneeded clutter: first we remove some packages
 #      installed with the devel_basis pattern, and finally we zypper clean -a.
 RUN zypper addrepo https://download.opensuse.org/repositories/devel:languages:go/openSUSE_Leap_15.0/devel:languages:go.repo && \
-    zypper addrepo https://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_15.0/ devel:tools && \
+    zypper addrepo https://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_15.1/ devel:tools.repo && \
     zypper --gpg-auto-import-keys ref && \
     zypper -n in --no-recommends ruby2.6-devel \
            libmariadb-devel postgresql-devel \
